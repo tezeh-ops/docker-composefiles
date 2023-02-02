@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=prod@123
 volumes:
   ebs30:
-    external: true
+    driver: rexray/ebs
 networks:
   ebay:
     external: true
