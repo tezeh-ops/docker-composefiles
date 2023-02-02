@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=prod@123
 volumes:
   ebs30:
-    driver: rexray/ebs
+    driver: rexray/ebs  # with this it will create a new volume and mount it as well (i'm still loking for the command to you and existing external like EBS, EFS etc in AWS)
 networks:
   ebay:
-    external: true
+    external: true  # means the volume is existing or has been created
