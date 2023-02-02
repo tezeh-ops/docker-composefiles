@@ -1,0 +1,31 @@
+#deploy with existing network/volumes:
+#======================
+version: '3.1'
+services:
+  springapp:
+    image: mylandmarktech/spring-boot-mongo
+    restart: always
+    ports:
+      - 3000:8080
+    networks:
+      - ebay
+    environment:
+      - MONGO_DB_HOSTNAME=mongo
+      - MONGO_DB_USERNAME=proddb
+      - MONGO_DB_PASSWORD=prod@123
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ebs30:/data/db
+    networks:
+      - ebay
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=proddb
+      - MONGO_INITDB_ROOT_PASSWORD=prod@123
+volumes:
+  ebs30:
+    external: true
+networks:
+  ebay:
+    external: true
